@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Page</title>
+<style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  max-width: 800px;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.product {
+  margin-top: 20px;
+  display: flex;
+}
+
+.product-content {
+  display: flex;
+  align-items: center;
+}
+
+.product-image {
+  margin-right: 20px;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 5px;
+}
+
+select, input, button {
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+button {
+  cursor: pointer;
+}
+
+
+</style>
+
+</head>
+<body>
+<div class="container">
+  <h1>Product Page</h1>
+  <div class="product">
+    <div class="product-content">
+      <div class="product-image">
+        <img id="blueShirt" src="https://tse3.mm.bing.net/th?id=OIP.pEXzLsmjtj19vh9pUwYm3AHaHa&pid=Api&P=0&h=180" alt="Blue T-Shirt" class="shirt-image">
+        <img id="redShirt" src="https://tse2.mm.bing.net/th?id=OIP.9E5CiKw9FPE8zBj6CrcGNQHaJc&pid=Api&P=0&h=180" alt="Red T-Shirt" class="shirt-image" style="display:none;">
+        <img id="greenShirt" src="https://tse3.mm.bing.net/th?id=OIP.MCnMdM7Da7AMlMKdpcw9zAHaJ4&pid=Api&P=0&h=180" alt="Green T-Shirt" class="shirt-image" style="display:none;">
+      </div>
+      <div class="product-info">
+        <label for="size">Size:</label>
+        <select id="size">
+          <option value="S">S</option>
+          <option value="M">M</option>
+          <option value="L">L</option>
+          <option value="XL">XL</option>
+        </select>
+        <label for="color">Color:</label>
+        <select id="color" onchange="changeColor()">
+          <option value="blue">Blue</option>
+          <option value="red">Red</option>
+          <option value="green">Green</option>
+        </select>
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" value="1" min="1">
+        <span id="price">Price: $200</span>
+        <button onclick="addToCart()">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    function changeColor() {
+  var color = document.getElementById('color').value;
+  document.querySelectorAll('.shirt-image').forEach(img => img.style.display = 'none');
+  document.getElementById(`${color}Shirt`).style.display = 'block';
+}
+
+function addToCart() {
+  var size = document.getElementById('size').value;
+  var color = document.getElementById('color').value;
+  var quantity = document.getElementById('quantity').value;
+  alert(`Added to cart: Size - ${size}, Color - ${color}, Quantity - ${quantity}`);
+}
+
+// Initialize product image with default color
+changeColor();
+
+</script>
+</body>
+</html>
